@@ -1,0 +1,309 @@
+<!-- saved from url=(0016)http://localhost -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Orchestrator Manager</title>
+		<link rel="stylesheet" type="text/css" href="FormStyle.css">
+	</head>
+
+	<body onload="startup()">
+		<img class="logo" src="UiPathLogo.svg" alt="UiPath Logo">
+
+		<!-- Based on form from https://www.sanwebe.com/2014/08/css-html-forms-designs -->
+		<div class="form-style">
+			<p for="operationType" id="operation" hidden>_OperationTypeLabel_</p>
+			<div class="form-style-heading" id="formTitle">_FormTitle_</div>
+			
+			<div class="orchestratorType" id="orchestratorType">
+				<label title="Manual Migration of entities between instances." for="orchestrator" id="orchestrator">
+					Manual Migration
+				</label>
+				
+				<label class="switch" for="toggleOn">
+					<input type="checkbox" id="toggleOn" onclick="actionTypeCheck()">
+					<span class="slider round"></span>
+				</label>
+			
+				<label title="Automated Migration of entities between instances. " for="liftAndShift" id="liftAndShift">
+					Lift And Shift</label>
+			</div>
+			
+			<form id="authenticationPanelForm" action="" method="post">
+				<div class="orchestratorType">
+					<label title="_FormOnPremisesOrchestratorTooltip_" for="onPremises"><input type="radio" onclick="orchestratorTypeCheck()" id="onPremises" name="orchestratorType" value="onPremises" _FormOnPremisesOrchestratorCheck_/>_FormOnPremisesOrchestratorLabel_</label>
+					<label title="_FormCloudOrchestratorTooltip_" for="cloud"><input type="radio" onclick="orchestratorTypeCheck()" id="cloud" name="orchestratorType" value="cloud" _FormCloudOrchestratorCheck_/>_FormCloudOrchestratorLabel_</label>
+					<label title="_FormAutomationSuiteTooltip_" for="automationSuite"><input type="radio" onclick="orchestratorTypeCheck()" id="automationSuite" name="orchestratorType" value="automationSuite" _FormAutomationSuiteCheck_/>_FormAutomationSuiteLabel_</label>
+				</div>
+				
+				<div id="onPremiseOrchestratorOptions">
+					<label title="_FormOrchestratorVersionTooltip_" for="orchestratorVersion"><span>_FormOrchestratorVersionLabel_</span><select id="orchestratorVersion" class="select-field" onchange="orchestratorTypeCheck()">
+						<option id="v201804" value="201804" _Form201804Selected_>2018.4</option>	
+						<option id="v201904" value="201904" _Form201904Selected_>2019.4</option>
+						<option id="v201910" value="201910" _Form201910Selected_>2019.10</option>
+						<option id="v202004" value="202004" _Form202004Selected_>2020.4</option>
+						<option id="v202010" value="202010" _Form202010Selected_>2020.10</option>
+						<option id="v202104" value="202104" _Form202104Selected_>2021.4</option>
+						<option id="v202110" value="202110" _Form202110Selected_>2021.10</option>
+						<option id="v202204" value="202204" _Form202204Selected_>2022.04</option>
+						<option id="v202210" value="202210" _Form202210Selected_>2022.10</option>
+						<option id="v202304" value="202304" _Form202304Selected_>2023.4</option>
+					</select></label>
+					<label title="_FormUsernameTooltip_" for="username"><span id="formUsernameLabel">_FormUsernameLabel_</span><input required="required" type="text" class="input-field" id="username" value="_FormUsernameValue_"/></label>
+					<label title="_FormPasswordTooltip_" for="password"><span id="formPasswordLabel">_FormPasswordLabel_</span><input required="required" type="password" class="input-field" id="password" value="_FormPasswordValue_"/></label>
+					<label title="_FormOrchestratorURLTooltip_" for="orchestratorURL"><span>_FormOrchestratorURLLabel_</span><input required="required" type="text" value="_FormOrchestratorURLValue_" class="input-field" id="orchestratorURL" /></label>
+					<label title="_FormTenantNameTooltip_" for="onPremisesTenantName"><span>_FormTenantNameLabel_</span><input required="required" type="text" value="_FormOnPremisesTenantNameValue_" class="input-field" id="onPremisesTenantName" /></label>
+				</div>
+				
+				<div id="cloudOrchestratorOptions">
+					<label title="_FormUserKeyTooltip_" for="userKey"><span id="formUserKeyLabel">_FormUserKeyLabel_</span><input required="required" type="text" class="input-field" id="userKey" value="_FormUserKeyValue_" /></label>
+					<label title="_FormClientIDTooltip_" for="clientID"><span id="formClientIDLabel">_FormClientIDLabel_</span><input required="required" type="text" class="input-field" id="clientID" value="_FormClientIDValue_"/></label>
+					<label title="_FormAccountNameTooltip_" for="accountName"><span>_FormAccountNameLabel_</span><input required="required" type="text" value="_FormAccountNameValue_" class="input-field" id="accountName" /></label>
+					<label title="_FormTenantNameTooltip_" for="cloudTenantName"><span>_FormTenantLogicalNameLabel_</span><input required="required" type="text" value="_FormCloudTenantNameValue_" class="input-field" id="cloudTenantName" /></label>
+				</div>
+				
+				<div id="automationSuiteOptions">
+					<label title="_FormAutomationSuiteVersionTooltip_" for="automationSuiteVersion"><span>_FormAutomationSuiteVersionLabel_</span><select id="automationSuiteVersion" class="select-field" onchange="orchestratorTypeCheck()">
+						<option id="v202210" value="202210" _Form202210Selected_>2022.10</option>
+						<option id="v202304" value="202304" _Form202304Selected_>2023.4</option>
+					</select></label>
+					<label title="_FormUsernameTooltip_" for="username"><span id="formASUsernameLabel">_FormUsernameLabel_</span><input required="required" type="text" class="input-field" id="asusername" value="_FormASUsernameValue_"/></label>
+					<label title="_FormPasswordTooltip_" for="password"><span id="formASPasswordLabel">_FormPasswordLabel_</span><input required="required" type="password" class="input-field" id="aspassword" value="_FormASPasswordValue_"/></label>
+					<label title="_FormAutomationSuiteURLTooltip_" for="automationSuiteURL"><span>_FormAutomationSuiteURLLabel_</span><input required="required" type="text" value="_FormAutomationSuiteURLValue_" class="input-field" id="automationSuiteURL" /></label>
+					<label title="_FormAutomationSuiteAccountNameTooltip_" for="automationSuiteAccountName"><span>_FormAutomationSuiteAccountNameLabel_</span><input required="required" type="text" value="_FormAutomationSuiteAccountNameValue_" class="input-field" id="automationSuiteaccountName" /></label>
+					<label title="_FormTenantNameTooltip_" for="automationSuiteTenantName"><span>_FormAutomationSuiteTenantNameLabel_</span><input required="required" type="text" value="_FormAutomationSuiteTenantNameValue_" class="input-field" id="AutomationSuiteTenantName" /></label>
+				</div>
+				
+				<div id="commonOrchestratorOptions">
+					<label title="_FormWorkbooksFolderPathTooltip_" for="workbooksFolderPath"><span>_FormWorkbooksFolderPathLabel_</span><input required="required" type="text" value="_FormWorkbooksFolderPathValue_" class="input-field" id="workbooksFolderPath" /></label>
+				</div>
+				
+				<div id="oauthOptions" class="windowsCredentialManagerOptions">
+					<label title="OAuth authentication with User Key and Client ID." for="useOAuthFlow"><input type="checkbox" id="useOAuthFlow" name="useOAuthFlow" onclick="useOAuthFlowCheck()" checked>Use OAuth flow</label>
+					<label title="Use credentials saved in Windows Credential Manager." for="useSavedCredential" ><input type="checkbox" onclick="useSavedCredentialCheck()" id="useSavedCredential" name="useSavedCredential" _FormCheckUseSavedCredentialCheck_/>Saved Credentials</label>
+					<label title="Save the credentials in Windows Credential Manager." for="saveCredential"><input type="checkbox" onclick="saveCredentialCheck()" id="saveCredential" name="saveCredential"/>Remember Credentials</label>
+				</div>
+				
+				<div class="buttons">
+					<input type="submit" value="OK" id="submitButton" onclick="submitValues(this)" />
+					<input type="submit" value="Cancel" id="cancelButton" onclick="submitValues(this)" formnovalidate="formnovalidate" />
+				</div>
+				<span class="LiftAndShiftNote" id= "LiftAndShiftNote" style="display:none">For Lift and Shift option, please input Source details, proceed to select entities and input Destination details. </span>
+				<span class="accountLockoutWarning">Please mind that many unsuccessful login attempts can temporarily lock the account, as specified in the Security settings of the tenant.</span>
+				
+
+			</form>
+		</div>	
+		
+		<script type="text/javascript">
+		/** @type {function()} */
+		var startup;
+		/** @type {function()} */
+		var actionTypeCheck;
+		/** @type {function()} */
+		var orchestratorTypeCheck;
+		/** @type {function()} */
+		var useOAuthFlowCheck;
+		/** @type {function()} */
+		var useSavedCredentialCheck;
+		/** @type {function()} */
+		var saveCredentialCheck;
+		/** @type {function(HTMLElement): boolean} */
+		var submitValues;
+		/** @type {function()} */
+		var operationcheck;
+
+		// IIFE to avoid polluting the global scope
+		(function () {
+			'use strict';
+
+			startup = function () {
+				actionTypeCheck();
+				useSavedCredentialCheck();
+				saveCredentialCheck();
+				orchestratorTypeCheck();
+				useOAuthFlowCheck();
+				operationcheck();
+			};
+			operationcheck = function() {
+				
+				if(document.getElementById('operation').innerText ==="Create"){
+					document.getElementById('orchestratorType').style.display= "none";
+				}
+			}
+			actionTypeCheck = function() {
+				
+				if (document.getElementById('toggleOn').checked){
+					document.getElementById('formTitle').innerText = "Enter Source Details";
+					document.getElementById('submitButton').value = "Select Entities";
+					document.getElementById('LiftAndShiftNote').style.display = "";
+					
+				}
+				else if (!document.getElementById('toggleOn').checked && document.getElementById('operation').innerText ==="Create"){
+					document.getElementById('formTitle').innerText = "Enter Destination Details"
+					document.getElementById('submitButton').value = "OK";
+					document.getElementById('LiftAndShiftNote').style.display = "";
+					
+
+				}
+				else{
+					document.getElementById('formTitle').innerText = "Orchestrator Manager"
+					document.getElementById('submitButton').value = "OK";
+					document.getElementById('LiftAndShiftNote').style.display = "none";
+					
+				}
+			}
+
+			useOAuthFlowCheck = function() {
+				if (document.getElementById('useOAuthFlow').checked) {
+					document.getElementById('formUsernameLabel').innerHTML = "App ID";
+					document.getElementById('formPasswordLabel').innerHTML = "App Secret";
+					document.getElementById('formASUsernameLabel').innerHTML = "App ID";
+					document.getElementById('formASPasswordLabel').innerHTML = "App Secret";
+					document.getElementById('formUserKeyLabel').innerHTML = "App Secret";
+					document.getElementById('formClientIDLabel').innerHTML = "App ID";
+				} else {
+					document.getElementById('formUsernameLabel').innerHTML = "Username";
+					document.getElementById('formPasswordLabel').innerHTML = "Password";
+					document.getElementById('formASUsernameLabel').innerHTML = "Username";
+					document.getElementById('formASPasswordLabel').innerHTML = "Password";
+					document.getElementById('formUserKeyLabel').innerHTML = "User Key";
+					document.getElementById('formClientIDLabel').innerHTML = "Client Id";
+				}
+			}
+
+			useSavedCredentialCheck = function () {
+				if (document.getElementById('useSavedCredential').checked) {
+					document.getElementById('saveCredential').checked = false;
+					disableTextInput(true);
+				} else {
+					disableTextInput(false);
+				}
+			}
+
+			saveCredentialCheck = function () {
+				if (document.getElementById('saveCredential').checked) {
+					document.getElementById('useSavedCredential').checked = false;
+					disableTextInput(false);
+				}
+			}
+
+			/** @param {boolean} flag */
+			function disableTextInput(flag) {
+				var i, len;
+				/** @type {Array.<string>} */
+				var textInputElementsIDs = ['username', 'password', 'userKey', 'clientID', 'asusername' , 'aspassword'];
+				/** @type {HTMLInputElement} */
+				var element;
+
+				// Disable or enable text input based on a flag
+				// Disabled inputs should be cleared of any existing value and should not be a required form field
+				for (i = 0, len = textInputElementsIDs.length; i < len; i += 1) {
+					element = document.getElementById(textInputElementsIDs[i]);
+					element.disabled = flag;
+					if (element.disabled) {
+						//element.value = '';
+						element.required = false;
+					}
+				}
+			}
+
+			orchestratorTypeCheck = function () {
+				if (document.getElementById('onPremises').checked) {
+						document.getElementById('onPremiseOrchestratorOptions').style.display = 'block';
+						document.getElementById('cloudOrchestratorOptions').style.display = 'none';
+						document.getElementById('automationSuiteOptions').style.display = 'none';
+						document.getElementById('oauthOptions').style.display = document.getElementById('orchestratorVersion').value >= 202104 ? 'block' : 'none';
+						document.getElementById('useOAuthFlow').checked = document.getElementById('orchestratorVersion').value >= 202104 ? true : false;
+						useOAuthFlowCheck();
+				} else if (document.getElementById('automationSuite').checked) {
+						document.getElementById('automationSuiteOptions').style.display = 'block';
+						document.getElementById('onPremiseOrchestratorOptions').style.display = 'none';
+						document.getElementById('cloudOrchestratorOptions').style.display = 'none';
+						document.getElementById('oauthOptions').style.display = 'block';
+						document.getElementById('useOAuthFlow').checked = true;
+					} else {
+						document.getElementById('automationSuiteOptions').style.display = 'none';
+						document.getElementById('cloudOrchestratorOptions').style.display = 'block';
+						document.getElementById('onPremiseOrchestratorOptions').style.display = 'none';
+						document.getElementById('oauthOptions').style.display = 'block';
+						document.getElementById('useOAuthFlow').checked = true;
+						}
+			}
+			/** @enum {string} */
+			var ORCHESTRATOR_TYPE = {
+				onPremises: 'onPremises',
+				cloud: 'cloud',
+				automationSuite: 'automationSuite'
+			};
+
+			/**
+			 * @param {HTMLElement} elem
+			 * @returns {boolean}
+			 */
+			submitValues = function(elem) {
+				var i, len;
+				/** @type {{shouldStop: boolean, orchestratorType: ORCHESTRATOR_TYPE}|Object.<string|boolean>} */
+				var jsonObject = {};
+				/** @type {HTMLElement} */
+				var formElement;
+				/** @type {HTMLCollectionOf.<HTMLInputElement>} */
+				var inputElements;
+				/** @type {HTMLInputElement} */
+				var inputElement;
+				/** @type {string} */
+				var formData;
+
+				// Should stop after performing operation
+				if (elem.id === 'cancelButton') {
+					jsonObject.shouldStop = true;
+				} else {
+					jsonObject.shouldStop = false;
+					formElement = document.getElementById('authenticationPanelForm');
+					inputElements = formElement.getElementsByTagName('input');
+
+					// Add input elements to the output dictionary
+					for (i = 0, len = inputElements.length; i < len; i += 1) {
+						inputElement = inputElements[i];
+						if (inputElement.type === 'text' || inputElement.type === 'password') {
+							jsonObject[inputElement.id] = inputElement.value;
+						} else if (inputElement.type === 'checkbox') {
+							jsonObject[inputElement.id] = inputElement.checked;
+							if (inputElement.id === 'useOAuthFlow' && document.getElementById('useOAuthFlow').style.display === 'none') {
+								jsonObject[inputElement.id] = false;
+							}
+						}
+					}
+					
+					jsonObject['orchestratorVersion'] = document.getElementById('orchestratorVersion').value;
+					if (!document.getElementById('toggleOn').checked) {
+                jsonObject.actionType = 'orchestrator';
+                } else if(document.getElementById('toggleOn').checked) {
+                jsonObject.actionType = 'liftAndShift';
+                }else {
+				jsonObject.actionType = '';
+			    }
+				        
+						if (document.getElementById('onPremises').checked) {
+							jsonObject.orchestratorType = ORCHESTRATOR_TYPE.onPremises;
+						} else if (document.getElementById('automationSuite').checked) {
+							jsonObject.orchestratorType = ORCHESTRATOR_TYPE.automationSuite;
+						} else {
+							jsonObject.orchestratorType = ORCHESTRATOR_TYPE.cloud;
+						}
+				}	
+
+				// Get JSON representation of dictionary
+				formData = JSON.stringify(jsonObject);
+
+				// noinspection JSDeprecatedSymbols,JSUnresolvedFunction
+				window.external.setResult(formData);
+
+				return true;
+			}
+		}());
+		</script>
+	</body>
+</html>

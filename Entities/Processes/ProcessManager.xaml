@@ -1,0 +1,1081 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ProcessManager" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, ui:GenericValue))" />
+    <x:Property Name="in_ProcessOperation" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1410.4,3898.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CreateMachine_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="70">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Converters</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json.Serialization</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Web</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="84">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Decide what operation should be performed on Processes." DisplayName="Process Manager" sap:VirtualizedContainerService.HintSize="752,3833.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="OpenWorkbook" />
+      <Variable x:TypeArguments="x:String" Name="OperationResult" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope (Process Manager)" sap:VirtualizedContainerService.HintSize="689.6,125.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" Workbook="[OpenWorkbook]" WorkbookPath="[String.Format(&quot;{0}\{1}&quot;, in_Config(&quot;EntitiesWorkbooksFolderPath&quot;), in_Config(&quot;ProcessConfigFilePath&quot;))]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+    <Switch x:TypeArguments="x:String" DisplayName="Switch (Process Operation)" Expression="[in_ProcessOperation.ToLowerInvariant]" sap:VirtualizedContainerService.HintSize="689.6,3524.8" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Switch.Default>
+        <Sequence DisplayName="Unsupported Operation" sap:VirtualizedContainerService.HintSize="376,285.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message (Unsupported Operation)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Error" Message="[in_Config(&quot;UnsupportedOperation&quot;)]" />
+          <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="[in_Config(&quot;ErrorMessageBoxTitle&quot;)]" DisplayName="Message Box (Unsupported Operation)" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[in_Config(&quot;UnsupportedOperation&quot;)]" />
+        </Sequence>
+      </Switch.Default>
+      <Sequence x:Key="get" sap2010:Annotation.AnnotationText="It is not necessary to check for numerous requests since the Get operation only does a constant number of requests." DisplayName="Get" sap:VirtualizedContainerService.HintSize="545.6,1146.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:Boolean" Name="AllOUFoldersAccessed" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Get)" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormProcessOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;GetOperationName&quot;))]" />
+        <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" sap2010:Annotation.AnnotationText="Clear previously written Process data and write new data about Processes." CreateNewFile="False" DisplayName="Excel Application Scope (Get Processes)" ExistingWorkbook="[OpenWorkbook]" sap:VirtualizedContainerService.HintSize="483.2,755.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_10" InstanceCachePeriod="3000" Visible="False">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,810.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="sd:DataTable" Name="PreviousProcesses" />
+                  <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+                  <Variable x:TypeArguments="sd:DataTable" Name="ProcessesData" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[PreviousProcesses]" DisplayName="Read Range (Previously Listed Processes)" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_8" SheetName="[in_Config(&quot;GetOperationName&quot;)]">
+                  <ui:ExcelReadRange.Range>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelReadRange.Range>
+                </ui:ExcelReadRange>
+                <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="Math.Max() prevents clearing the header of the table." Cell="[&quot;A2:Z&quot;+Math.Max(1+PreviousProcesses.Rows.Count, 2).ToString]" DisplayName="Write Cell (Clear Previously Listed Processes)" sap:VirtualizedContainerService.HintSize="387.2,119.2" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Config(&quot;GetOperationName&quot;)]">
+                  <ui:ExcelWriteCell.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelWriteCell.Text>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ExcelWriteCell>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PromptUserForOUFolders Workflow" sap:VirtualizedContainerService.HintSize="387.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Common/PromptUserForOUFolders.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_SelectedOUFolders">[OUFoldersData]</OutArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_UseTenantOption">False</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Make request after clearing sheet to prevent users from using old data." DisplayName="Invoke GetProcessesData Workflow (Get Processes)" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Entities\Processes\GetProcessesData.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[New String(){}]</InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                    <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ProcessesData">[ProcessesData]</OutArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed">[AllOUFoldersAccessed]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <ui:ExcelWriteRange AddHeaders="False" DataTable="[ProcessesData]" DisplayName="Write Range (Processes Data)" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_Config(&quot;GetOperationName&quot;)]" StartingCell="A2" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+        <If sap2010:Annotation.AnnotationText="Even if a user is able to see all OUs/Folders, they might not be a member of some OUs/Folders and thus not be able to access restricted resources.&#xA;Access failures are logged by GetProcessesData.xaml, but a message box is also displayed in this case." Condition="[Not AllOUFoldersAccessed]" DisplayName="If Successfully Accessed OU/Folders" sap:VirtualizedContainerService.HintSize="483.2,62.4" sap2010:WorkflowViewState.IdRef="If_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="[in_Config(&quot;WarningMessageBoxTitle&quot;)]" DisplayName="Message Box (Could not Access All OU/Folders)" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[in_Config(&quot;FailedToAccessOUFolder&quot;)]" />
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_27" />
+          </If.Else>
+        </If>
+      </Sequence>
+      <Sequence x:Key="create" DisplayName="Create" sap:VirtualizedContainerService.HintSize="649.6,3220.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="EnvironmentsData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedProcessesDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="PackagesData" />
+          <Variable x:TypeArguments="s:String[]" Default="[{&#xA;  &quot;OUFolderName&quot;,&#xA;  &quot;EnvironmentName&quot;,&#xA;  &quot;PackageName&quot;,&#xA;  &quot;PackageVersion&quot;,&#xA;  &quot;ProcessName&quot;,&#xA;  &quot;Description&quot;,&#xA;  &quot;InputArguments&quot;,&#xA;  &quot;ProcessID&quot;,&#xA;  &quot;Result&quot;&#xA;}]" Name="ColumnNames" />
+          <Variable x:TypeArguments="scg:List(x:String)" Name="DuplicatePackageLibraryVersionsList" />
+          <Variable x:TypeArguments="x:String" Name="DuplicateEntitiesMessage" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Create Process)" sap:VirtualizedContainerService.HintSize="587.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormProcessOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;CreateOperationName&quot;))]" />
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AssignColumnNames Workflow (Create Process)" sap:VirtualizedContainerService.HintSize="587.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_49" UnSafe="False" WorkflowFileName="Common/AssignColumnNames.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_Config("CreateOperationName")]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DataTable">[ProcessesDetails]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedProcessesDetails (Create Process)" sap:VirtualizedContainerService.HintSize="587.2,125.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedProcessesDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[ProcessesDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ConfirmNumerousRequests Workflow (Create Process)" sap:VirtualizedContainerService.HintSize="587.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Common/ConfirmNumerousRequests.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_PlannedNumberOfRequests">[UnprocessedProcessesDetails.Count()]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <If Condition="[UnprocessedProcessesDetails.Count() &gt; 0]" DisplayName="If There are Rows to Process (Create Process)" sap:VirtualizedContainerService.HintSize="587.2,940.8" sap2010:WorkflowViewState.IdRef="If_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Sequence sap2010:Annotation.AnnotationText="Get current data beforehand for confirmation purposes and to reduce the number of requests." DisplayName="Get Data for Shared Use Among Rows (Create Process)" sap:VirtualizedContainerService.HintSize="376.8,757.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Folders (OUs) specified in the sheet." DisplayName="Invoke GetOUFolderData Workflow (Create Process)" sap:VirtualizedContainerService.HintSize="333.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Common/GetOUFolderData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("OUFolderName").ToString)).Select(Function(Row) Row("OUFolderName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OUFoldersData">[OUFoldersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Processes specified in the sheet." DisplayName="Invoke GetProcessesData Workflow (Create Process)" sap:VirtualizedContainerService.HintSize="333.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="Entities\Processes\GetProcessesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("ProcessName").ToString)).Select(Function(Row) Row("ProcessName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ProcessesData">[ProcessesData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Environments specified in the sheet." DisplayName="Invoke GetEnvironmentsData Workflow (Create Process)" sap:VirtualizedContainerService.HintSize="333.6,144.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Entities\Environments\GetEnvironmentsData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("EnvironmentName").ToString)).Select(Function(Row) Row("EnvironmentName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_EnvironmentsData">[EnvironmentsData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetPackagesLibrariesData Workflow (Create Process)" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_48" UnSafe="False" WorkflowFileName="Entities/PackagesLibraries/GetPackagesLibrariesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("PackageName").ToString)).Select(Function(Row) Row("PackageName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_PackagesLibrariesData">[PackagesData]</OutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Entity">Package</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData" />
+                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_CanHaveFolderPackages">False</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllFoldersAccessed" />
+                  <OutArgument x:TypeArguments="x:String" x:Key="out_DuplicateEntitiesMessage">[DuplicateEntitiesMessage]</OutArgument>
+                  <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_DuplicatePackageLibraryVersionsList">[DuplicatePackageLibraryVersionsList]</OutArgument>
+                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dict_FolderFeedID" />
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+          <If.Else>
+            <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="300,82.4" sap2010:WorkflowViewState.IdRef="Sequence_28">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </If.Else>
+        </If>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Create Process)" sap:VirtualizedContainerService.HintSize="587.2,1522.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[UnprocessedProcessesDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="ProcessDetails" />
+              </ActivityAction.Argument>
+              <Sequence sap:VirtualizedContainerService.HintSize="553.6,1334.4" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="510.4,1244.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <Sequence sap:VirtualizedContainerService.HintSize="473.6,1013.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Int32" Name="PackageIndex" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LookupDataTable CellValue="{x:Null}" LookupColumnName="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[PackagesData]" DisplayName="Lookup Package in Tenant feed" sap:VirtualizedContainerService.HintSize="411.2,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupValue="[ProcessDetails(&quot;PackageName&quot;).ToString]" RowIndex="[PackageIndex]">
+                        <ui:LookupDataTable.LookupColumnIndex>
+                          <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                            <Literal x:TypeArguments="s:Nullable(x:Int32)" Value="0" />
+                          </InArgument>
+                        </ui:LookupDataTable.LookupColumnIndex>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:LookupDataTable>
+                      <If Condition="[PackageIndex&lt;&gt;-1]" DisplayName="If Package Exists in Tenant Feed" sap:VirtualizedContainerService.HintSize="411.2,566.4" sap2010:WorkflowViewState.IdRef="If_15">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="376.8,203.2" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateProcess Workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Entities/Processes/CreateProcess.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenedWorkbook">[OpenWorkbook]</InArgument>
+                                <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_EnvironmentName">[ProcessDetails("EnvironmentName").ToString]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PackageName">[ProcessDetails("PackageName").ToString]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PackageVersion">[ProcessDetails("PackageVersion").ToString.Replace(" ", "")]</InArgument>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessIndex">[ProcessesDetails.Rows.IndexOf(ProcessDetails)]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderName">[ProcessDetails("OUFolderName").ToString]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_EnvironmentsData">[EnvironmentsData]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">[ProcessDetails("ProcessName").ToString]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_ProcessesData">[ProcessesData]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_PackagesData">[PackagesData]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_ProcessDetails">[ProcessDetails]</InArgument>
+                                <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+                                <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_DuplicatePackageLibraryVersionsList">[DuplicatePackageLibraryVersionsList]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_DuplicateEntitiesMessage">[DuplicateEntitiesMessage]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_PackageFolder">[PackagesData.Rows(PackageIndex)("Folder Name").ToString]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="377.6,180" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Throw Exception="[New ArgumentException(&quot;Package does not exist in Tenant Feed&quot;)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:ArgumentException" sap:VirtualizedContainerService.HintSize="476.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:ArgumentException">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:ArgumentException" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Failed to Create Process" sap:VirtualizedContainerService.HintSize="496,479.2" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Error" Message="[Exception.Message]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:LogMessage>
+                          <Assign DisplayName="Assign (OperationResult)" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_32">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[OperationResult]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[Exception.Message]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteCellByColumnNameAndIndex Workflow" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_58" UnSafe="False" WorkflowFileName="Common\WriteCellByColumnNameAndIndex.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_Config("CreateOperationName")]</InArgument>
+                              <InArgument x:TypeArguments="x:Int64" x:Key="in_Index">[ProcessesDetails.Rows.IndexOf(ProcessDetails)]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">Result</InArgument>
+                              <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Value">[OperationResult]</InArgument>
+                              <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenedWorkbook">[OpenWorkbook]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <Sequence x:Key="delete" DisplayName="Delete " sap:VirtualizedContainerService.HintSize="581.6,1662.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedProcessesDetails" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Delete Process)" sap:VirtualizedContainerService.HintSize="519.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormProcessOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;DeleteOperationName&quot;))]" />
+        <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope (Delete Process)" ExistingWorkbook="[OpenWorkbook]" sap:VirtualizedContainerService.HintSize="519.2,24.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" Visible="False">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:Annotation.AnnotationText="The names of the original columns from the sheet depend on the used language, so rename them according to the same names used by the Get operation for easier understanding and manipulation by column name instead of column index." DisplayName="Get Data and Rename Columns (Delete Process)" sap:VirtualizedContainerService.HintSize="400,742" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[ProcessesDetails]" DisplayName="Read Range (Delete Process)" sap:VirtualizedContainerService.HintSize="338,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" SheetName="[in_Config(&quot;DeleteOperationName&quot;)]" UseFilter="True">
+                  <ui:ExcelReadRange.Range>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelReadRange.Range>
+                </ui:ExcelReadRange>
+                <Assign DisplayName="Assign OUFolderID Column (Delete Process)" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(0).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">OUFolderID</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign OUFolderName Column (Delete Process)" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(1).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">OUFolderName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign ProcessID Column (Delete Process)" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(2).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">ProcessID</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign ProcessName Column (Delete Process)" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(3).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">ProcessName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign Result Column (Delete Process)" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(4).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">Result</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedProcessesDetails (Delete Process)" sap:VirtualizedContainerService.HintSize="519.2,124" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedProcessesDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[ProcessesDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ConfirmNumerousRequests Workflow (Delete Process)" sap:VirtualizedContainerService.HintSize="519.2,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Common/ConfirmNumerousRequests.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_PlannedNumberOfRequests">[UnprocessedProcessesDetails.Count()]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <If Condition="[UnprocessedProcessesDetails.Count() &gt; 0]" DisplayName="If There are Rows to Process (Delete Process)" sap:VirtualizedContainerService.HintSize="519,757" sap2010:WorkflowViewState.IdRef="If_11">
+          <If.Then>
+            <Sequence sap2010:Annotation.AnnotationText="Get current data beforehand for confirmation purposes and to reduce the number of requests." DisplayName="Get Data for Shared Use Among Rows (Delete Process)" sap:VirtualizedContainerService.HintSize="441,481" sap2010:WorkflowViewState.IdRef="Sequence_16">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Folders (OUs) specified in the sheet." DisplayName="Invoke GetOUFolderData Workflow (Delete Process)" sap:VirtualizedContainerService.HintSize="379,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="Common/GetOUFolderData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("OUFolderName").ToString)).Select(Function(Row) Row("OUFolderName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OUFoldersData">[OUFoldersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Processes specified in the sheet." DisplayName="Invoke GetProcessesData Workflow (Delete Process)" sap:VirtualizedContainerService.HintSize="379,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Entities\Processes\GetProcessesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("ProcessName").ToString)).Select(Function(Row) Row("ProcessName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ProcessesData">[ProcessesData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+        </If>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Delete Process)" sap:VirtualizedContainerService.HintSize="519,239" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[UnprocessedProcessesDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="ProcessDetails" />
+              </ActivityAction.Argument>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DeleteProcess Workflow" sap:VirtualizedContainerService.HintSize="369,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Entities/Processes/DeleteProcess.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessIndex">[ProcessesDetails.Rows.IndexOf(ProcessDetails)]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderID">[ProcessDetails("OUFolderID").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderName">[ProcessDetails("OUFolderName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessID">[ProcessDetails("ProcessID").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">[ProcessDetails("ProcessName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_ProcessesData">[ProcessesData]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <Sequence x:Key="updateprocesstolatestpackageversion" DisplayName="Update Process To Latest Package Version" sap:VirtualizedContainerService.HintSize="596.8,1662.4" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedProcessesDetails" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="534.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormProcessOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;UpdateProcessToLatestPackageVersionOperationName&quot;))]" />
+        <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope (Update Process To Latest Package Version)" ExistingWorkbook="[OpenWorkbook]" sap:VirtualizedContainerService.HintSize="534.4,24.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" Visible="False">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:Annotation.AnnotationText="The names of the original columns from the sheet depend on the used language, so rename them according to the same names used by the Get operation for easier understanding and manipulation by column name instead of column index." DisplayName="Get Data and Rename Columns (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="376,372" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[ProcessesDetails]" DisplayName="Read Range (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" SheetName="[in_Config(&quot;UpdateProcessToLatestPackageVersionOperationName&quot;)]" UseFilter="True">
+                  <ui:ExcelReadRange.Range>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelReadRange.Range>
+                </ui:ExcelReadRange>
+                <Assign DisplayName="Assign OUFolderName Column (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(0).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">OUFolderName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign ProcessName Column (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(1).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">ProcessName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign Result Column (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(2).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">Result</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedProcessesDetails (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="534.4,124" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedProcessesDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[ProcessesDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ConfirmNumerousRequests Workflow (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="534.4,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Common/ConfirmNumerousRequests.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_PlannedNumberOfRequests">[UnprocessedProcessesDetails.Count()]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <If Condition="[UnprocessedProcessesDetails.Count() &gt; 0]" DisplayName="If There are Rows to Process (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="534,757" sap2010:WorkflowViewState.IdRef="If_12">
+          <If.Then>
+            <Sequence sap2010:Annotation.AnnotationText="Get current data beforehand for confirmation purposes and to reduce the number of requests." DisplayName="Get Data for Shared Use Among Rows (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="456,481" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Folders (OUs) specified in the sheet." DisplayName="Invoke GetOUFolderData Workflow (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="394,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="Common/GetOUFolderData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("OUFolderName").ToString)).Select(Function(Row) Row("OUFolderName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OUFoldersData">[OUFoldersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Processes specified in the sheet." DisplayName="Invoke GetProcessesData Workflow (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="394,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Entities\Processes\GetProcessesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("ProcessName").ToString)).Select(Function(Row) Row("ProcessName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ProcessesData">[ProcessesData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+        </If>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Update Process To Latest Package Version)" sap:VirtualizedContainerService.HintSize="534,239" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[UnprocessedProcessesDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="ProcessDetails" />
+              </ActivityAction.Argument>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UpdateProcessToLatestPackageVersion Workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Entities\Processes\UpdateProcessToLatestPackageVersion.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessIndex">[ProcessesDetails.Rows.IndexOf(ProcessDetails)]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderName">[ProcessDetails("OUFolderName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">[ProcessDetails("ProcessName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessesData">[ProcessesData]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <Sequence x:Key="rollbackprocesstopreviouspackageversion" DisplayName="Rollback Process To Previous Package Version" sap:VirtualizedContainerService.HintSize="605.6,2340.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedProcessesDetails" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="543.2,92" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormProcessOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;RollbackProcessToPreviousPackageVersionOperationName&quot;))]" />
+        <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope (Rollback Process To Previous Package Version)" ExistingWorkbook="[OpenWorkbook]" sap:VirtualizedContainerService.HintSize="543.2,704" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_9" InstanceCachePeriod="3000" Visible="False">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:Annotation.AnnotationText="The names of the original columns from the sheet depend on the used language, so rename them according to the same names used by the Get operation for easier understanding and manipulation by column name instead of column index." DisplayName="Get Data and Rename Columns (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="496,594" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[ProcessesDetails]" DisplayName="Read Range (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_7" SheetName="[in_Config(&quot;RollbackProcessToPreviousPackageVersionOperationName&quot;)]" UseFilter="True">
+                  <ui:ExcelReadRange.Range>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelReadRange.Range>
+                </ui:ExcelReadRange>
+                <Assign DisplayName="Assign OUFolderName Column (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_24">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(0).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">OUFolderName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign ProcessName Column (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_25">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(1).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">ProcessName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign Result Column (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_26">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ProcessesDetails.Columns(2).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">Result</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedProcessesDetails (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="543,124" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedProcessesDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[ProcessesDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ConfirmNumerousRequests Workflow (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="543,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Common/ConfirmNumerousRequests.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_PlannedNumberOfRequests">[ProcessesDetails.Rows.Count]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <If Condition="[UnprocessedProcessesDetails.Count() &gt; 0]" DisplayName="If There are Rows to Process (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="543,757" sap2010:WorkflowViewState.IdRef="If_13">
+          <If.Then>
+            <Sequence sap2010:Annotation.AnnotationText="Get current data beforehand for confirmation purposes and to reduce the number of requests." DisplayName="Get Data for Shared Use Among Rows (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="465,481" sap2010:WorkflowViewState.IdRef="Sequence_18">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Folders (OUs) specified in the sheet." DisplayName="Invoke GetOUFolderData Workflow (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="403,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="Common/GetOUFolderData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("OUFolderName").ToString)).Select(Function(Row) Row("OUFolderName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OUFoldersData">[OUFoldersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Processes specified in the sheet." DisplayName="Invoke GetProcessesData Workflow (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="403,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="Entities\Processes\GetProcessesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("ProcessName").ToString)).Select(Function(Row) Row("ProcessName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ProcessesData">[ProcessesData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+        </If>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Rollback Process To Previous Package Version)" sap:VirtualizedContainerService.HintSize="543,239" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[UnprocessedProcessesDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="ProcessDetails" />
+              </ActivityAction.Argument>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke RollbackProcessToPreviousPackageVersion Workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Entities\Processes\RollbackProcessToPreviousPackageVersion.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessIndex">[ProcessesDetails.Rows.IndexOf(ProcessDetails)]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">[ProcessDetails("ProcessName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderName">[ProcessDetails("OUFolderName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessesData">[ProcessesData]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <Sequence x:Key="updateprocesstospecifiedpackageversion" DisplayName="Update Process To Specified Package Version" sap:VirtualizedContainerService.HintSize="581.6,1750.4" sap2010:WorkflowViewState.IdRef="Sequence_26">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedProcessesDetails" />
+          <Variable x:TypeArguments="s:String[]" Default="[{ &quot;OUFolderName&quot;, &quot;ProcessName&quot;, &quot;PackageVersion&quot;, &quot;Result&quot; }]" Name="ColumnNames" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="519.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormProcessOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;UpdateProcessToSpecifiedPackageVersionOperationName&quot;))]" />
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AssignColumnNames workflow (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="519.2,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_54" UnSafe="False" WorkflowFileName="Common\AssignColumnNames.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_Config("UpdateProcessToSpecifiedPackageVersionOperationName")]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DataTable">[ProcessesDetails]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedProcessesDetails (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="519.2,124" sap2010:WorkflowViewState.IdRef="Assign_30">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedProcessesDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[ProcessesDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ConfirmNumerousRequests Workflow (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="519,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_50" UnSafe="False" WorkflowFileName="Common/ConfirmNumerousRequests.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_PlannedNumberOfRequests">[UnprocessedProcessesDetails.Count()]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <If Condition="[UnprocessedProcessesDetails.Count() &gt; 0]" DisplayName="If There are Rows to Process (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="519,757" sap2010:WorkflowViewState.IdRef="If_14">
+          <If.Then>
+            <Sequence sap2010:Annotation.AnnotationText="Get current data beforehand for confirmation purposes and to reduce the number of requests." DisplayName="Get Data for Shared Use Among Rows (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="441,481" sap2010:WorkflowViewState.IdRef="Sequence_25">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Folders (OUs) specified in the sheet." DisplayName="Invoke GetOUFolderData Workflow (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="379,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_51" UnSafe="False" WorkflowFileName="Common/GetOUFolderData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("OUFolderName").ToString)).Select(Function(Row) Row("OUFolderName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OUFoldersData">[OUFoldersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Processes specified in the sheet." DisplayName="Invoke GetProcessesData Workflow (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="379,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_52" UnSafe="False" WorkflowFileName="Entities\Processes\GetProcessesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedProcessesDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("ProcessName").ToString)).Select(Function(Row) Row("ProcessName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ProcessesData">[ProcessesData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+        </If>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Update Process To Specified Package Version)" sap:VirtualizedContainerService.HintSize="519,239" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[UnprocessedProcessesDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="ProcessDetails" />
+              </ActivityAction.Argument>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UpdateProcessToSpecifiedPackageVersion workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_55" UnSafe="False" WorkflowFileName="Entities\Processes\UpdateProcessToSpecifiedPackageVersion.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">[ProcessDetails("ProcessName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_ProcessIndex">[ProcessesDetails.Rows.IndexOf(ProcessDetails)]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderName">[ProcessDetails("OUFolderName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessesData">[ProcessesData]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_PackageVersion">[ProcessDetails("PackageVersion").ToString.Replace(" ", "")]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+    </Switch>
+  </Sequence>
+</Activity>

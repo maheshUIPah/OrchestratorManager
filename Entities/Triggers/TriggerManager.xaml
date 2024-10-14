@@ -1,0 +1,673 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TriggerManager" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, ui:GenericValue))" />
+    <x:Property Name="in_TriggerOperation" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>684,8785</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CreateMachine_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="66">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Converters</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json.Serialization</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Web</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Decide what operation should be performed on Triggers." DisplayName="Trigger Manager" sap:VirtualizedContainerService.HintSize="694,8720" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:WorkbookApplication" Name="OpenWorkbook" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope (Trigger Manager)" sap:VirtualizedContainerService.HintSize="632,125" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" Workbook="[OpenWorkbook]" WorkbookPath="[String.Format(&quot;{0}\{1}&quot;, in_Config(&quot;EntitiesWorkbooksFolderPath&quot;), in_Config(&quot;TriggerConfigFilePath&quot;))]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+    <Switch x:TypeArguments="x:String" DisplayName="Switch (Trigger Operation)" Expression="[in_TriggerOperation.ToLowerInvariant]" sap:VirtualizedContainerService.HintSize="632,8413" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Switch.Default>
+        <Sequence DisplayName="Unsupported Operation" sap:VirtualizedContainerService.HintSize="400,328" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message (Unsupported Operation)" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[in_Config(&quot;UnsupportedOperation&quot;)]" />
+          <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="[in_Config(&quot;ErrorMessageBoxTitle&quot;)]" DisplayName="Message Box (Unsupported Operation)" sap:VirtualizedContainerService.HintSize="338,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[in_Config(&quot;UnsupportedOperation&quot;)]" />
+        </Sequence>
+      </Switch.Default>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence x:Key="get" sap2010:Annotation.AnnotationText="It is not necessary to check for numerous requests since the Get operation only does a constant number of requests." DisplayName="Get" sap:VirtualizedContainerService.HintSize="537,1967" sap2010:WorkflowViewState.IdRef="Sequence_10">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:Boolean" Name="AllOUFoldersAccessed" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Get Triggers)" sap:VirtualizedContainerService.HintSize="475,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormTriggerOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;GetOperationName&quot;))]" />
+        <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" sap2010:Annotation.AnnotationText="Clear previously written Trigger data and write new data about Triggers." CreateNewFile="False" DisplayName="Excel Application Scope (Get Triggers)" ExistingWorkbook="[OpenWorkbook]" sap:VirtualizedContainerService.HintSize="475,1179" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_9" InstanceCachePeriod="3000" Visible="False">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="441,1038" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="sd:DataTable" Name="PreviousTriggers" />
+                  <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+                  <Variable x:TypeArguments="sd:DataTable" Name="TriggersData" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[PreviousTriggers]" DisplayName="Read Range (Previously Listed Triggers)" sap:VirtualizedContainerService.HintSize="379,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_7" SheetName="[in_Config(&quot;GetOperationName&quot;)]">
+                  <ui:ExcelReadRange.Range>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelReadRange.Range>
+                </ui:ExcelReadRange>
+                <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="Math.Max() prevents clearing the header of the table." Cell="[&quot;A2:Z&quot;+Math.Max(1+PreviousTriggers.Rows.Count, 2).ToString]" DisplayName="Write Cell (Clear Previously Listed Triggers)" sap:VirtualizedContainerService.HintSize="379,119" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Config(&quot;GetOperationName&quot;)]">
+                  <ui:ExcelWriteCell.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelWriteCell.Text>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ExcelWriteCell>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PromptUserForOUFolders Workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Common/PromptUserForOUFolders.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_SelectedOUFolders">[OUFoldersData]</OutArgument>
+                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_UseTenantOption">False</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Make request after clearing sheet to prevent users from using old data." DisplayName="Invoke GetTriggersData Workflow (Get Triggers)" sap:VirtualizedContainerService.HintSize="379,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="Entities\Triggers\GetTriggersData.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                    <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                    <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[New String(){}]</InArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed">[AllOUFoldersAccessed]</OutArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TriggersData">[TriggersData]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <ui:FilterDataTable sap2010:Annotation.AnnotationText="Reorder columns for better visualization." DataTable="[TriggersData]" DisplayName="Filter Data Table (Get Triggers)" sap:VirtualizedContainerService.HintSize="379,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[TriggersData]" SelectColumnsMode="Keep">
+                  <ui:FilterDataTable.Filters>
+                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                      <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
+                    </scg:List>
+                  </ui:FilterDataTable.Filters>
+                  <ui:FilterDataTable.SelectColumns>
+                    <scg:List x:TypeArguments="InArgument" Capacity="32">
+                      <InArgument x:TypeArguments="x:String">["OUFolderID"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["OUFolderName"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["TriggerID"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["TriggerName"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["Enabled"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["ProcessName"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["InputArgumentsDefinition"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["UseCalendar"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["StartStrategy"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["StartProcessCron"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["StartProcessCronDetails"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["StopStrategy"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["StopProcessDate"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["StopProcessExpression"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["TimezoneID"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["ExternalJobKey"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["JobPriority"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["ItemsActivationThreshold"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["ItemsPerJobActivationTarget"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["MaxJobsForActivation"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["QueueName"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["CalendarName"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["RuntimeType"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["SpecifiedRobotIds"]</InArgument>
+                    </scg:List>
+                  </ui:FilterDataTable.SelectColumns>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:FilterDataTable>
+                <ui:ExcelWriteRange AddHeaders="False" DataTable="[TriggersData]" DisplayName="Write Range (Triggers Details)" sap:VirtualizedContainerService.HintSize="379,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_Config(&quot;GetOperationName&quot;)]" StartingCell="A2" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+        <If sap2010:Annotation.AnnotationText="Even if a user is able to see all OUs/Folders, they might not be a member of some OUs/Folders and thus not be able to access restricted resources.&#xA;Access failures are logged by GetTriggersData.xaml, but a message box is also displayed in this case." Condition="[Not AllOUFoldersAccessed]" DisplayName="If Successfully Accessed OU/Folders" sap:VirtualizedContainerService.HintSize="475,463" sap2010:WorkflowViewState.IdRef="If_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="[in_Config(&quot;WarningMessageBoxTitle&quot;)]" DisplayName="Message Box (Could not Access All OU/Folders)" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[in_Config(&quot;FailedToAccessOUFolder&quot;)]" />
+          </If.Then>
+        </If>
+      </Sequence>
+      <Sequence x:Key="create" DisplayName="Create" sap:VirtualizedContainerService.HintSize="584,2301" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="TriggersDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="TriggersData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedTriggersDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="CalendarsData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="QueuesData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="ProcessesData" />
+          <Variable x:TypeArguments="s:String[]" Default="[{&#xA;  &quot;OUFolderName&quot;,&#xA;  &quot;TriggerName&quot;,&#xA;  &quot;Enabled&quot;,&#xA;  &quot;ProcessName&quot;,&#xA;  &quot;InputArgumentsDefinition&quot;,&#xA;  &quot;UseCalendar&quot;,&#xA;  &quot;StartStrategy&quot;,&#xA;  &quot;StartProcessCron&quot;,&#xA;  &quot;StartProcessCronDetails&quot;,&#xA;  &quot;StopStrategy&quot;,&#xA;  &quot;StopProcessDate&quot;,&#xA;  &quot;StopProcessExpression&quot;,&#xA;  &quot;TimezoneID&quot;,&#xA;  &quot;JobPriority&quot;,&#xA;  &quot;ItemsActivationThreshold&quot;,&#xA;  &quot;ItemsPerJobActivationTarget&quot;,&#xA;  &quot;MaxJobsForActivation&quot;,&#xA;  &quot;QueueName&quot;,&#xA;  &quot;CalendarName&quot;,&#xA;  &quot;RuntimeType&quot;,&#xA;  &quot;Username&quot;,&#xA;  &quot;TriggerID&quot;,&#xA;  &quot;Result&quot;&#xA;}]" Name="ColumnNames" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Create Trigger)" sap:VirtualizedContainerService.HintSize="522,92" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormTriggerOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;CreateOperationName&quot;))]" />
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AssignColumnNames Workflow File (Create Trigger)" sap:VirtualizedContainerService.HintSize="522,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="Common\AssignColumnNames.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_Config("CreateOperationName")]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DataTable">[TriggersDetails]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedTriggersDetails (Create Trigger)" sap:VirtualizedContainerService.HintSize="522,124" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedTriggersDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[TriggersDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ConfirmNumerousRequests Workflow (Create Trigger)" sap:VirtualizedContainerService.HintSize="522,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Common/ConfirmNumerousRequests.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_PlannedNumberOfRequests">[UnprocessedTriggersDetails.Count()]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <If Condition="[UnprocessedTriggersDetails.Count() &gt; 0]" DisplayName="If There are Rows to Process (Create Trigger)" sap:VirtualizedContainerService.HintSize="522,1309" sap2010:WorkflowViewState.IdRef="If_7">
+          <If.Then>
+            <Sequence sap2010:Annotation.AnnotationText="Get current data beforehand for confirmation purposes and to reduce the number of requests." DisplayName="Get Data for Shared Use Among Rows (Create Trigger)" sap:VirtualizedContainerService.HintSize="444,1033" sap2010:WorkflowViewState.IdRef="Sequence_16">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Calendars specified in the sheet." DisplayName="Invoke GetCalendarsData Workflow (Create Trigger)" sap:VirtualizedContainerService.HintSize="382,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="Entities\Calendars\GetCalendarsData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedTriggersDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("CalendarName").ToString)).Select(Function(Row) Row("CalendarName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CalendarsData">[CalendarsData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Folders (OUs) specified in the sheet." DisplayName="Invoke GetOUFolderData Workflow (Create Trigger)" sap:VirtualizedContainerService.HintSize="382,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Common/GetOUFolderData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedTriggersDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("OUFolderName").ToString)).Select(Function(Row) Row("OUFolderName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OUFoldersData">[OUFoldersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Queues specified in the sheet." DisplayName="Invoke GetQueuesData Workflow (Create Trigger)" sap:VirtualizedContainerService.HintSize="382,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Entities\Queues\GetQueuesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedTriggersDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("QueueName").ToString)).Select(Function(Row) Row("QueueName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_QueuesData">[QueuesData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Processes specified in the sheet." DisplayName="Invoke GetProcessesData Workflow (Create Trigger)" sap:VirtualizedContainerService.HintSize="382,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="Entities\Processes\GetProcessesData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedTriggersDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("ProcessName").ToString)).Select(Function(Row) Row("ProcessName").ToString).Distinct().ToArray()]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ProcessesData">[ProcessesData]</OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Triggers specified in the sheet." DisplayName="Invoke GetTriggersData Workflow (Create Trigger)" sap:VirtualizedContainerService.HintSize="382,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Entities\Triggers\GetTriggersData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedTriggersDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("TriggerName").ToString)).Select(Function(Row) Row("TriggerName").ToString).Distinct().ToArray()]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TriggersData">[TriggersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+        </If>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Create Trigger)" sap:VirtualizedContainerService.HintSize="522,239" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[UnprocessedTriggersDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="TriggerDetails" />
+              </ActivityAction.Argument>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateTrigger Workflow" sap:VirtualizedContainerService.HintSize="356,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="Entities\Triggers\CreateTrigger.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenedWorkbook">[OpenWorkbook]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderName">[TriggerDetails("OUFolderName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TriggerIndex">[TriggersDetails.Rows.IndexOf(TriggerDetails)]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TriggersData">[TriggersData]</InOutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_QueuesData">[QueuesData]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_CalendarsData">[CalendarsData]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_InputArgumentsDefinition">[TriggerDetails("InputArgumentsDefinition").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Enabled">[TriggerDetails("Enabled").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_UseCalendar">[TriggerDetails("UseCalendar").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StartProcessCronDetails">[TriggerDetails("StartProcessCronDetails").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StartProcessCron">[TriggerDetails("StartProcessCron").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StopStrategy">[TriggerDetails("StopStrategy").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StartStrategy">[TriggerDetails("StartStrategy").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StopProcessDate">[TriggerDetails("StopProcessDate").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_JobPriority">[TriggerDetails("JobPriority").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ItemsActivationThreshold">[TriggerDetails("ItemsActivationThreshold").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ItemsPerJobActivationTarget">[TriggerDetails("ItemsPerJobActivationTarget").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_MaxJobsForActivation">[TriggerDetails("MaxJobsForActivation").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RuntimeType">[TriggerDetails("RuntimeType").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TimezoneID">[TriggerDetails("TimezoneID").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StopProcessExpression">[TriggerDetails("StopProcessExpression").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TriggerName">[TriggerDetails("TriggerName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CalendarName">[TriggerDetails("CalendarName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ProcessName">[TriggerDetails("ProcessName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_QueueName">[TriggerDetails("QueueName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessesData">[ProcessesData]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TriggerDetails">[TriggerDetails]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <Sequence x:Key="delete" DisplayName="Delete " sap:VirtualizedContainerService.HintSize="592,2584" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="TriggersDetails" />
+          <Variable x:TypeArguments="sd:DataTable" Name="OUFoldersData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="TriggersData" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedTriggersDetails" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Delete Trigger)" sap:VirtualizedContainerService.HintSize="530,92" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormTriggerOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;DeleteOperationName&quot;))]" />
+        <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope (Delete Trigger)" ExistingWorkbook="[OpenWorkbook]" sap:VirtualizedContainerService.HintSize="530,948" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" Visible="False">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:Annotation.AnnotationText="The names of the original columns from the sheet depend on the used language, so rename them according to the same names used by the Get operation for easier understanding and manipulation by column name instead of column index." DisplayName="Get Data and Rename Columns (Delete Trigger)" sap:VirtualizedContainerService.HintSize="496,838" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[TriggersDetails]" DisplayName="Read Range (Delete Trigger)" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" SheetName="[in_Config(&quot;DeleteOperationName&quot;)]" UseFilter="True">
+                  <ui:ExcelReadRange.Range>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelReadRange.Range>
+                </ui:ExcelReadRange>
+                <Assign DisplayName="Assign OUFolderID Column (Delete Trigger)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_18">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[TriggersDetails.Columns(0).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">OUFolderID</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign OUFolderName Column (Delete Trigger)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[TriggersDetails.Columns(1).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">OUFolderName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign TriggerID Column (Delete Trigger)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_19">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[TriggersDetails.Columns(2).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">TriggerID</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign TriggerName Column (Delete Trigger)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_15">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[TriggersDetails.Columns(3).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">TriggerName</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="Assign Result Column (Delete Trigger)" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_17">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[TriggersDetails.Columns(4).ColumnName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">Result</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedTriggersDetails (Delete Trigger)" sap:VirtualizedContainerService.HintSize="530,124" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedTriggersDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[TriggersDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ConfirmNumerousRequests Workflow (Delete Trigger)" sap:VirtualizedContainerService.HintSize="530,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Common/ConfirmNumerousRequests.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_PlannedNumberOfRequests">[UnprocessedTriggersDetails.Count()]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <If Condition="[UnprocessedTriggersDetails.Count() &gt; 0]" DisplayName="If There are Rows to Process (Delete Trigger)" sap:VirtualizedContainerService.HintSize="530,757" sap2010:WorkflowViewState.IdRef="If_8">
+          <If.Then>
+            <Sequence sap2010:Annotation.AnnotationText="Get current data beforehand for confirmation purposes and to reduce the number of requests." DisplayName="Get Data for Shared Use Among Rows (Delete Trigger)" sap:VirtualizedContainerService.HintSize="431,481" sap2010:WorkflowViewState.IdRef="Sequence_13">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Folders (OUs) specified in the sheet." DisplayName="Invoke GetOUFolderData Workflow (Delete Trigger)" sap:VirtualizedContainerService.HintSize="369,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Common/GetOUFolderData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedTriggersDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("OUFolderName").ToString)).Select(Function(Row) Row("OUFolderName").ToString).Distinct().ToArray()]</InArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OUFoldersData">[OUFoldersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consider only Triggers specified in the sheet." DisplayName="Invoke GetTriggersData Workflow (Delete Trigger)" sap:VirtualizedContainerService.HintSize="369,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Entities\Triggers\GetTriggersData.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:Int64[]" x:Key="in_FilterIDs">[New Int64(){}]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_FilterNames">[UnprocessedTriggersDetails.Where(Function(Row) Not String.IsNullOrWhiteSpace(Row("TriggerName").ToString)).Select(Function(Row) Row("TriggerName").ToString).Distinct().ToArray()]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AllOUFoldersAccessed" />
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TriggersData">[TriggersData]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </If.Then>
+        </If>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Delete Trigger)" sap:VirtualizedContainerService.HintSize="530,239" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[UnprocessedTriggersDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="TriggerDetails" />
+              </ActivityAction.Argument>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DeleteTrigger Workflow" sap:VirtualizedContainerService.HintSize="355,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="Entities\Triggers\DeleteTrigger.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TriggerIndex">[TriggersDetails.Rows.IndexOf(TriggerDetails)]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderID">[TriggerDetails("OUFolderID").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_OUFolderName">[TriggerDetails("OUFolderName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TriggerName">[TriggerDetails("TriggerName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_TriggerID">[TriggerDetails("TriggerID").ToString]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_OUFoldersData">[OUFoldersData]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TriggersData">[TriggersData]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <Sequence x:Key="enabledisabletrigger" DisplayName="Enable/Disable Trigger" sap:VirtualizedContainerService.HintSize="496,799" sap2010:WorkflowViewState.IdRef="Sequence_20">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="TriggersDetails" />
+          <Variable x:TypeArguments="s:String[]" Default="[{&#xA;  &quot;FolderId&quot;,&#xA;  &quot;FolderName&quot;,&#xA;  &quot;TriggerId&quot;,&#xA;  &quot;TriggerName&quot;,&#xA;  &quot;Enable&quot;,&#xA;  &quot;Result&quot;&#xA;}]" Name="ColumnNames" />
+          <Variable x:TypeArguments="sd:DataRow[]" Name="UnprocessedTriggersDetails" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:LogMessage DisplayName="Log Message (Enable/Disable Trigger)" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Trace" Message="[String.Format(&quot;{0}: {1} - {2}: {3}&quot;, in_Config(&quot;FormEntityLabel&quot;), in_Config(&quot;FormTriggerOption&quot;), in_Config(&quot;FormOperationLabel&quot;), in_Config(&quot;EnableDisableTriggerOperationName&quot;))]" />
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AssignColumnNames Workflow File (Enable/Disable Trigger)" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="Common\AssignColumnNames.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenWorkbook">[OpenWorkbook]</InArgument>
+            <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_Config("EnableDisableTriggerOperationName")]</InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DataTable">[TriggersDetails]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+        <Assign sap2010:Annotation.AnnotationText="Select only rows that do not have a value in the Result column, but have at least a value in any other column." DisplayName="Assign UnprocessedTriggersDetails (Enable/Disable Trigger)" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_44">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataRow[]">[UnprocessedTriggersDetails]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataRow[]">[TriggersDetails.AsEnumerable().Where(Function(Row) String.IsNullOrWhiteSpace(Row("Result").ToString) AndAlso Row.ItemArray.Any(Function(RowField) Not String.IsNullOrWhiteSpace(RowField.ToString))).ToArray()]</InArgument>
+          </Assign.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Assign>
+        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each Row (Enable/Disable Trigger)" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[UnprocessedTriggersDetails]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="sd:DataRow">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="TriggerDetails" />
+              </ActivityAction.Argument>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnableTrigger Workflow (Enable/Disable Trigger)" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_40" UnSafe="False" WorkflowFileName="Entities\Triggers\EnableDisableTrigger.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TriggerDetails">[TriggerDetails]</InArgument>
+                  <InArgument x:TypeArguments="x:Int64" x:Key="in_TriggerIndex">[TriggersDetails.Rows.IndexOf(TriggerDetails)]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="in_ColumnNames">[ColumnNames]</InArgument>
+                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_OpenedWorkbook">[OpenWorkbook]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+    </Switch>
+  </Sequence>
+</Activity>
