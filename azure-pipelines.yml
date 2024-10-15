@@ -1,24 +1,16 @@
-# azure-pipelines.yml
 trigger:
   branches:
     include:
-      - main  # Specify the branch that will trigger the pipeline
+      - main  # Ensure the pipeline is triggered when main branch updates on GitHub
 
-pool:
-  vmImage: 'ubuntu-latest'  # Specify the virtual machine image to use for the build
+resources:
+  repositories:
+    - repository: github-repo
+      type: github
+      name: maheshUIPah/OrchestratorManager
+      endpoint: GitHub  # GitHub Service Connection in Azure DevOps
 
 steps:
-  - script: echo "Building the project..."  # Simple step to demonstrate a script
-    displayName: 'Run a one-line script'
-
-  - task: Bash@3  # Using a Bash task to execute commands
-    inputs:
-      targetType: 'inline'
-      script: |
-        echo "Running build process..."
-        # Add your build commands here, e.g., npm install, dotnet build, etc.
-
-  - task: PublishBuildArtifacts@1  # Publish build artifacts
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to the artifacts
-      ArtifactName: 'drop'  # Name of the artifacts
+  - checkout: github-repo  # Check out the GitHub repository
+  - script: 
+      echo "Building the project from GitHub"
