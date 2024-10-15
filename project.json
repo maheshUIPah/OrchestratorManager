@@ -56,6 +56,13 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Entities\\Assets\\TestCase-GetAssetsData.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "af501033-bd2f-4987-901b-5d02a6e2cdbe",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Entities\\Assets\\TestCase-EditAsset.xaml"
       }
     ],
     "modernBehavior": false,
