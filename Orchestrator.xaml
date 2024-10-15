@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410.4,801.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>873.3333333333334,800</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="104">
@@ -173,7 +173,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="A tool to help Orchestrator administrators to perform bulk operations on entities like Users, Robots, Assets, Machines, Environments, Processes, Organization Units, Folders, Queues, Packages, Libraries and Triggers.&#xA;&#xA;For more details, refer to the manual located in the Documentation folder." DisplayName="Orchestrator Manager" sap:VirtualizedContainerService.HintSize="449.6,736.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="A tool to help Orchestrator administrators to perform bulk operations on entities like Users, Robots, Assets, Machines, Environments, Processes, Organization Units, Folders, Queues, Packages, Libraries and Triggers.&#xA;&#xA;For more details, refer to the manual located in the Documentation folder." DisplayName="Orchestrator Manager" sap:VirtualizedContainerService.HintSize="512,735.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="AuthenticationSuccessful" />
     </Sequence.Variables>
@@ -184,14 +184,10 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Authenticate Workflow" sap:VirtualizedContainerService.HintSize="387.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Core/Authentication/Authenticate.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Authenticate Workflow" sap:VirtualizedContainerService.HintSize="450,147.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Core/Authentication/Authenticate.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="io_Config">
-          <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" ExpressionText="io_Config" />
-        </InOutArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AuthenticationSuccessful">
-          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="AuthenticationSuccessful" />
-        </OutArgument>
+        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="io_Config">[io_Config]</InOutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AuthenticationSuccessful">[AuthenticationSuccessful]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -200,7 +196,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If Condition="[AuthenticationSuccessful]" DisplayName="If Authentication Was Successful" sap:VirtualizedContainerService.HintSize="387.2,379.2" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[AuthenticationSuccessful]" DisplayName="If Authentication Was Successful" sap:VirtualizedContainerService.HintSize="450,404.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -208,17 +204,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PerformOperationOnEntity Workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Core/PerformOperationOnEntity.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PerformOperationOnEntity Workflow" sap:VirtualizedContainerService.HintSize="336.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Core/PerformOperationOnEntity.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="io_Config">
-              <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" ExpressionText="io_Config" />
-            </InOutArgument>
+            <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="io_Config">[io_Config]</InOutArgument>
             <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="300,82.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,104.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>870,3026</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>873.3333333333334,2954.6666666666665</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Authenticate_OnPremises_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -91,14 +91,14 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Authenticate to on-premises Orchestrator instance and store authentication token in Config." DisplayName="Make Authentication Request On-Premises Orchestrator" sap:VirtualizedContainerService.HintSize="696,2961.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Authenticate to on-premises Orchestrator instance and store authentication token in Config." DisplayName="Make Authentication Request On-Premises Orchestrator" sap:VirtualizedContainerService.HintSize="696,2890" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Update Configuration File" sap:VirtualizedContainerService.HintSize="634,691.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Update Configuration File" sap:VirtualizedContainerService.HintSize="634,682.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="OrchestratorURL" />
       </Sequence.Variables>
@@ -108,7 +108,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign sap2010:Annotation.AnnotationText="(New Uri(in_OrchestratorURL)).GetLeftPart(UriPartial.Authority)" DisplayName="Assign OrchestratorURL" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign sap2010:Annotation.AnnotationText="(New Uri(in_OrchestratorURL)).GetLeftPart(UriPartial.Authority)" DisplayName="Assign OrchestratorURL" sap:VirtualizedContainerService.HintSize="434,148" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[OrchestratorURL]</OutArgument>
         </Assign.To>
@@ -121,7 +121,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <If Condition="[OrchestratorURL &lt;&gt; io_Config(&quot;OnPremisesOrchestratorURL&quot;)]" DisplayName="If Orchestrator URL Is Specified" sap:VirtualizedContainerService.HintSize="434,299.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[OrchestratorURL &lt;&gt; io_Config(&quot;OnPremisesOrchestratorURL&quot;)]" DisplayName="If Orchestrator URL Is Specified" sap:VirtualizedContainerService.HintSize="434,329.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -129,7 +129,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UpdateConfigurationFile Workflow" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Common/UpdateConfigurationFile.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UpdateConfigurationFile Workflow" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Common/UpdateConfigurationFile.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFilePath">[io_Config("ConfigFilePath")]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">Settings</InArgument>
@@ -140,7 +140,7 @@
           </ui:InvokeWorkflowFile>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_8" />
+          <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_8" />
         </If.Else>
       </If>
       <Assign DisplayName="Assign Orchestrator URL" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -179,7 +179,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <ui:HttpClient AcceptFormat="JSON" AuthenticationType="None" Body="{x:Null}" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" DisplayName="HTTP Request (Authenticate)" EnableSSLVerification="True" EndPoint="[io_Config(&quot;OrchestratorURL&quot;).Trim+&quot;/identity/connect/token&quot;]" FileAttachments="{x:Null}" sap:VirtualizedContainerService.HintSize="204,72" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="[Result]" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="[StatusCode]" TimeoutMS="[io_Config(&quot;HTTPRequestActivityTimeout&quot;)]" Username="{x:Null}">
+            <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request (Authenticate)" EnableSSLVerification="True" EndPoint="[io_Config(&quot;OrchestratorURL&quot;).Trim+&quot;/identity/connect/token&quot;]" sap:VirtualizedContainerService.HintSize="204,72" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[Result]" StatusCode="[StatusCode]" TimeoutMS="[io_Config(&quot;HTTPRequestActivityTimeout&quot;)]">
               <ui:HttpClient.Attachments>
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
               </ui:HttpClient.Attachments>
@@ -190,33 +190,10 @@
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
               </ui:HttpClient.Headers>
               <ui:HttpClient.Parameters>
-                <InArgument x:TypeArguments="x:String" x:Key="grant_type">
-                  <Literal x:TypeArguments="x:String">
-                    <Literal.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </Literal.Result>client_credentials</Literal>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="client_id">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Username">
-                    <VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </VisualBasicValue.Result>
-                  </VisualBasicValue>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="client_secret">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Password">
-                    <VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </VisualBasicValue.Result>
-                  </VisualBasicValue>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="scope">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_Config(&quot;AuthenticationScope&quot;).ToString">
-                    <VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </VisualBasicValue.Result>
-                  </VisualBasicValue>
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="grant_type">client_credentials</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="client_id">[in_Username]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="client_secret">[in_Password]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="scope">[io_Config("AuthenticationScope").ToString]</InArgument>
               </ui:HttpClient.Parameters>
               <ui:HttpClient.UrlSegments>
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
@@ -238,7 +215,7 @@
                   <InArgument x:TypeArguments="x:String">[("{""tenancyName"":""" + io_Config("TenantName") + """,""usernameOrEmailAddress"":""" + in_Username + """,""password"":""" + in_Password + """}").ToString]</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:HttpClient AcceptFormat="JSON" AuthenticationType="None" Body="[Payload]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" DisplayName="HTTP Request (Authenticate)" EnableSSLVerification="True" EndPoint="[io_Config(&quot;OrchestratorURL&quot;).Trim+&quot;/api/account/authenticate&quot;]" FileAttachments="{x:Null}" sap:VirtualizedContainerService.HintSize="434,72" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="[Result]" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="[StatusCode]" TimeoutMS="[io_Config(&quot;HTTPRequestActivityTimeout&quot;)]" Username="{x:Null}">
+              <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[Payload]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request (Authenticate)" EnableSSLVerification="True" EndPoint="[io_Config(&quot;OrchestratorURL&quot;).Trim+&quot;/api/account/authenticate&quot;]" sap:VirtualizedContainerService.HintSize="434,72" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[Result]" StatusCode="[StatusCode]" TimeoutMS="[io_Config(&quot;HTTPRequestActivityTimeout&quot;)]">
                 <ui:HttpClient.Attachments>
                   <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                 </ui:HttpClient.Attachments>
@@ -326,7 +303,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
-            <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="{x:Null}" Caption="[io_Config(&quot;ErrorMessageBoxTitle&quot;)]" ChosenButton="{x:Null}" DisplayName="Message Box (Authentication Failed)" sap:VirtualizedContainerService.HintSize="434,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[io_Config(&quot;AuthenticationFailed&quot;)]" TopMost="{x:Null}" />
+            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="[io_Config(&quot;ErrorMessageBoxTitle&quot;)]" DisplayName="Message Box (Authentication Failed)" sap:VirtualizedContainerService.HintSize="434,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[io_Config(&quot;AuthenticationFailed&quot;)]" />
             <Assign DisplayName="Assign out_ShouldStop (False)" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Boolean">[out_ShouldStop]</OutArgument>

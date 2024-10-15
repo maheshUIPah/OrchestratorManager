@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1387.33333333333,854</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>873.3333333333334,996</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -77,23 +77,24 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Confirm whether the number of planned requests is greater than the specified threshold and ask for user confirmation." DisplayName="Confirm Numerous Requests" sap:VirtualizedContainerService.HintSize="714,681.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
+  <Sequence sap2010:Annotation.AnnotationText="Confirm whether the number of planned requests is greater than the specified threshold and ask for user confirmation." DisplayName="Confirm Numerous Requests" sap:VirtualizedContainerService.HintSize="526,931.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[in_PlannedNumberOfRequests &gt; in_Config(&quot;MaximumRequestsThreshold&quot;)]" DisplayName="If Number of Requests Is Larger than Threshold" sap:VirtualizedContainerService.HintSize="672,558.666666666667" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[in_PlannedNumberOfRequests &gt; in_Config(&quot;MaximumRequestsThreshold&quot;)]" DisplayName="If Number of Requests Is Larger than Threshold" sap:VirtualizedContainerService.HintSize="464,798" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Large Number of Requests" sap:VirtualizedContainerService.HintSize="526,404.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Large Number of Requests" sap:VirtualizedContainerService.HintSize="430,530.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="SelectedButton" />
           </Sequence.Variables>
@@ -102,13 +103,13 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="[in_Config(&quot;ErrorMessageBoxTitle&quot;)]" ChosenButton="[SelectedButton]" DisplayName="Message Box (Confirm Large Number of Operations)" sap:VirtualizedContainerService.HintSize="484,58.6666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[in_Config(&quot;ConfirmNumerousRequests&quot;)]" TopMost="True" />
-          <If Condition="[SelectedButton.ToLowerInvariant = &quot;no&quot;]" DisplayName="If Process Should Be Interrupted" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_4">
+          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="[in_Config(&quot;ErrorMessageBoxTitle&quot;)]" ChosenButton="[SelectedButton]" DisplayName="Message Box (Confirm Large Number of Operations)" sap:VirtualizedContainerService.HintSize="368,118.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[in_Config(&quot;ConfirmNumerousRequests&quot;)]" TopMost="True" />
+          <If Condition="[SelectedButton.ToLowerInvariant = &quot;no&quot;]" DisplayName="If Process Should Be Interrupted" sap:VirtualizedContainerService.HintSize="368,324" sap2010:WorkflowViewState.IdRef="If_4">
             <If.Then>
-              <Throw DisplayName="Throw (Numerous Requests Not Approved)" Exception="[New OperationCanceledException(in_Config(&quot;NumerousRequestsNotConfirmed&quot;))]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <Throw DisplayName="Throw (Numerous Requests Not Approved)" Exception="[New OperationCanceledException(in_Config(&quot;NumerousRequestsNotConfirmed&quot;))]" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </If.Then>
             <If.Else>
-              <ui:LogMessage DisplayName="Log Message (Numerous Requests Confirmed)" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[in_Config(&quot;NumerousRequestsConfirmed&quot;)]">
+              <ui:LogMessage DisplayName="Log Message (Numerous Requests Confirmed)" sap:VirtualizedContainerService.HintSize="200,25.333333333333332" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[in_Config(&quot;NumerousRequestsConfirmed&quot;)]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -120,6 +121,15 @@
           </If>
         </Sequence>
       </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,104.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
     </If>
   </Sequence>
 </Activity>

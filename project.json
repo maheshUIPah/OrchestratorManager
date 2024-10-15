@@ -42,7 +42,15 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "bf0bf31a-4a4d-4b6b-89db-9a017b948339",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Entities\\Assets\\TestCase-CreateAsset.xaml"
+      }
+    ],
     "modernBehavior": false,
     "saveToCloud": false
   },

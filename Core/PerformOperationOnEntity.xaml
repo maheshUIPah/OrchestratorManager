@@ -3,7 +3,7 @@
     <x:Property Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, ui:GenericValue))" />
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1410.4,4289.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>984,1632.6666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -98,7 +98,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Perform operations on entities until the execution is stopped." DisplayName="Perform Operation on Entity" sap:VirtualizedContainerService.HintSize="992.8,4224.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+  <Sequence sap2010:Annotation.AnnotationText="Perform operations on entities until the execution is stopped." DisplayName="Perform Operation on Entity" sap:VirtualizedContainerService.HintSize="994,1568" sap2010:WorkflowViewState.IdRef="Sequence_15">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:ICollection(x:String)" Default="[New Collection(of String)]" Name="OUSelectedEntityNames" />
       <Variable x:TypeArguments="scg:IList(x:String)" Default="[New List(of String)]" Name="listFormattedEntityNames" />
@@ -111,7 +111,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeEntitiesWorkbooks Workflow" sap:VirtualizedContainerService.HintSize="930.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Core/InitializeEntitiesWorkbooks.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeEntitiesWorkbooks Workflow" sap:VirtualizedContainerService.HintSize="932,147.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Core/InitializeEntitiesWorkbooks.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[io_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
@@ -122,7 +122,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <While DisplayName="While User Does Not Stop Execution" sap:VirtualizedContainerService.HintSize="930.4,3928" sap2010:WorkflowViewState.IdRef="While_1">
+    <While DisplayName="While User Does Not Stop Execution" sap:VirtualizedContainerService.HintSize="932,1302" sap2010:WorkflowViewState.IdRef="While_1">
       <While.Variables>
         <Variable x:TypeArguments="x:String" Name="Action">
           <Variable.Default>
@@ -139,7 +139,7 @@
       <While.Condition>
         <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not Action.Equals(&quot;cancel&quot;)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
       </While.Condition>
-      <Sequence DisplayName="Check Token and Invoke Entity Manager" sap:VirtualizedContainerService.HintSize="885.6,3768" sap2010:WorkflowViewState.IdRef="Sequence_14">
+      <Sequence DisplayName="Check Token and Invoke Entity Manager" sap:VirtualizedContainerService.HintSize="885.3333333333334,1114" sap2010:WorkflowViewState.IdRef="Sequence_14">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="Entity" />
           <Variable x:TypeArguments="x:String" Name="Operation" />
@@ -149,7 +149,7 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[io_Config.ContainsKey(&quot;LiftAndShiftEnabled&quot;) AndAlso&#xA;  Convert.ToBoolean(io_Config(&quot;LiftAndShiftEnabled&quot;).ToString)]" DisplayName="If LiftAndShift Enabled" sap:VirtualizedContainerService.HintSize="823.2,3013.6" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[io_Config.ContainsKey(&quot;LiftAndShiftEnabled&quot;) AndAlso&#xA;  Convert.ToBoolean(io_Config(&quot;LiftAndShiftEnabled&quot;).ToString)]" DisplayName="If LiftAndShift Enabled" sap:VirtualizedContainerService.HintSize="823.3333333333334,423.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -157,13 +157,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence sap:VirtualizedContainerService.HintSize="789.6,2627.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_21">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign Action" sap:VirtualizedContainerService.HintSize="746.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign DisplayName="Assign Action" sap:VirtualizedContainerService.HintSize="746.6666666666666,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[Action]</OutArgument>
                 </Assign.To>
@@ -171,14 +172,14 @@
                   <InArgument x:TypeArguments="x:String">submit</InArgument>
                 </Assign.Value>
               </Assign>
-              <ui:ReadRange AddHeaders="True" DataTable="[dtEntityMappings]" DisplayName="Read Entity Mapping Sheet" sap:VirtualizedContainerService.HintSize="746.4,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[io_Config(&quot;EntityMappingsSheetName&quot;)]" WorkbookPath="[io_Config(&quot;EntityMappingFilePath&quot;)]">
+              <ui:ReadRange AddHeaders="True" DataTable="[dtEntityMappings]" DisplayName="Read Entity Mapping Sheet" sap:VirtualizedContainerService.HintSize="746.6666666666666,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[io_Config(&quot;EntityMappingsSheetName&quot;)]" WorkbookPath="[io_Config(&quot;EntityMappingFilePath&quot;)]">
                 <ui:ReadRange.Range>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ReadRange.Range>
               </ui:ReadRange>
-              <If Condition="[Not(Convert.ToBoolean(io_Config(&quot;GetOperationPerformed&quot;).ToString))]" DisplayName="If Get Operation not performed" sap:VirtualizedContainerService.HintSize="746.4,2166.4" sap2010:WorkflowViewState.IdRef="If_2">
+              <If Condition="[Not(Convert.ToBoolean(io_Config(&quot;GetOperationPerformed&quot;).ToString))]" DisplayName="If Get Operation not performed" sap:VirtualizedContainerService.HintSize="746.6666666666666,3886.6666666666665" sap2010:WorkflowViewState.IdRef="If_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -186,7 +187,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="616,1731.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="616,1731.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="CommaSeparatedFormattedEntityNames" />
                     </Sequence.Variables>
@@ -713,7 +714,7 @@
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence sap:VirtualizedContainerService.HintSize="712.8,1983.2" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                  <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="712.8,1983.2" sap2010:WorkflowViewState.IdRef="Sequence_38">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -958,13 +959,13 @@
             </Sequence>
           </If.Then>
           <If.Else>
-            <Sequence sap:VirtualizedContainerService.HintSize="376.8,203.2" sap2010:WorkflowViewState.IdRef="Sequence_39">
+            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,226" sap2010:WorkflowViewState.IdRef="Sequence_39">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEntityAndOperation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Core\GetEntityAndOperation.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetEntityAndOperation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="354,138" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Core\GetEntityAndOperation.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="in_Config">[io_Config]</InArgument>
                   <OutArgument x:TypeArguments="x:String" x:Key="out_Entity">[Entity]</OutArgument>
