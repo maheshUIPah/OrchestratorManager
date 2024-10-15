@@ -49,6 +49,13 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Entities\\Assets\\TestCase-CreateAsset.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "49c66aa3-956d-4b56-898a-88aa31b0ca4f",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Entities\\Assets\\TestCase-GetAssetsData.xaml"
       }
     ],
     "modernBehavior": false,
