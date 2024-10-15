@@ -5,12 +5,12 @@ trigger:
 
 resources:
   repositories:
-    - repository: github-repo
+    - repository: gitHub-OrchManager
       type: github
       name: maheshUIPah/OrchestratorManager
       endpoint: GitHub  # GitHub Service Connection in Azure DevOps
 
 steps:
-  - checkout: github-repo  # Check out the GitHub repository
+  - checkout: gitHub-OrchManager  # Check out the GitHub repository
   - script: 
       echo "Building the project from GitHub"
