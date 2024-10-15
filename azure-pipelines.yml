@@ -1,0 +1,24 @@
+# azure-pipelines.yml
+trigger:
+  branches:
+    include:
+      - main  # Specify the branch that will trigger the pipeline
+
+pool:
+  vmImage: 'ubuntu-latest'  # Specify the virtual machine image to use for the build
+
+steps:
+  - script: echo "Building the project..."  # Simple step to demonstrate a script
+    displayName: 'Run a one-line script'
+
+  - task: Bash@3  # Using a Bash task to execute commands
+    inputs:
+      targetType: 'inline'
+      script: |
+        echo "Running build process..."
+        # Add your build commands here, e.g., npm install, dotnet build, etc.
+
+  - task: PublishBuildArtifacts@1  # Publish build artifacts
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'  # Path to the artifacts
+      ArtifactName: 'drop'  # Name of the artifacts
