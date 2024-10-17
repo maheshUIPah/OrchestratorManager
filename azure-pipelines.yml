@@ -3,14 +3,22 @@ trigger:
     include:
       - main  # Ensure the pipeline is triggered when main branch updates on GitHub
 
-resources:
-  repositories:
-    - repository: gitHub-OrchManager
-      type: github
-      name: maheshUIPah/OrchestratorManager
-      endpoint: GitHub  # GitHub Service Connection in Azure DevOps
+pool:
+  vmImage: windows-latest
 
 steps:
-  - checkout: gitHub-OrchManager  # Check out the GitHub repository
+  - checkout: github-repo  # Check out the GitHub repository
   - script: 
       echo "Building the project from GitHub"
+  - task: UiPathPack@4
+    inputs:
+      versionType: 'AutoVersion'
+      projectJsonPath: '$(Build.SourcesDirectory)'
+      orchestratorConnection: 'Staging_Orchestrator'
+      outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+      traceLevel: 'Information'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Demo'
+      publishLocation: 'Container'
