@@ -7,14 +7,13 @@ pool:
   vmImage: windows-latest
 
 steps:
-  - checkout: github-repo  # Check out the GitHub repository
   - script: 
       echo "Building the project from GitHub"
   - task: UiPathPack@4
     inputs:
       versionType: 'AutoVersion'
       projectJsonPath: '$(Build.SourcesDirectory)'
-      orchestratorConnection: 'Staging_Orchestrator'
+      orchestratorConnection: 'Staging_Orch'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       traceLevel: 'Information'
   - task: PublishBuildArtifacts@1
