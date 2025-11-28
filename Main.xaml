@@ -120,7 +120,7 @@
       <AssemblyReference>System.Security.Cryptography.ProtectedData</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="A tool to help Orchestrator administrators to perform bulk operations on entities like Users, Robots, Assets, Machines, Environments, Processes, Organization Units, Folders, Queues, Packages, Libraries and Triggers.&#xA;&#xA;For more details, refer to the manual located in the Documentation folder." DisplayName="Main" sap:VirtualizedContainerService.HintSize="1124,1089.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="A tool to help Orchestrator administrators to perform bulk operations on entities like Users, Robots, Assets, Machines, Environments, Processes, Organization Units, Folders, Queues, Packages, Libraries and Triggers.&#xA;&#xA;For more details, refer to the manual located in the Documentation folder." DisplayName="Main" sap:VirtualizedContainerService.HintSize="1012.8000000000002,1061.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="ShouldStop" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" Name="Config" />
@@ -132,7 +132,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[String.IsNullOrEmpty(in_ConfigFilePath)]" DisplayName="If Empty Config Path?" sap:VirtualizedContainerService.HintSize="435.2,267.2" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[String.IsNullOrEmpty(in_ConfigFilePath)]" DisplayName="If Empty Config Path ?" sap:VirtualizedContainerService.HintSize="435.2,235.2" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -208,9 +208,9 @@
         <InOutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="io_Config">[Config]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[Config(&quot;LiftAndShiftEnabled&quot;)= True]" DisplayName="If (lift and shift is enabled)" sap:VirtualizedContainerService.HintSize="435.2,375.2" sap2010:WorkflowViewState.IdRef="If_6">
+    <If Condition="[Config(&quot;LiftAndShiftEnabled&quot;)= True]" DisplayName="If (lift and shift is enabled)" sap:VirtualizedContainerService.HintSize="435.2,347.2" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,226" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,197.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
