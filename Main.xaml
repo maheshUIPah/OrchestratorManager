@@ -132,7 +132,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[String.IsNullOrEmpty(in_ConfigFilePath)]" DisplayName="If Empty Config Path ?" sap:VirtualizedContainerService.HintSize="435.2,325.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[String.IsNullOrEmpty(in_ConfigFilePath)]" DisplayName="If Empty Config Path?" sap:VirtualizedContainerService.HintSize="435.2,325.6" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
