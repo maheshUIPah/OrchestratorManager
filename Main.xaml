@@ -120,7 +120,7 @@
       <AssemblyReference>System.Security.Cryptography.ProtectedData</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="A tool to help Orchestrator administrators to perform bulk operations on entities like Users, Robots, Assets, Machines, Environments, Processes, Organization Units, Folders, Queues, Packages, Libraries and Triggers.&#xA;&#xA;For more details, refer to the manual located in the Documentation folder." DisplayName="Main" sap:VirtualizedContainerService.HintSize="755.8666666666667,1068.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="A tool to help Orchestrator administrators to perform bulk operations on entities like Users, Robots, Assets, Machines, Environments, Processes, Organization Units, Folders, Queues, Packages, Libraries and Triggers.&#xA;&#xA;For more details, refer to the manual located in the Documentation folder." DisplayName="Main" sap:VirtualizedContainerService.HintSize="1012.8000000000002,1148" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="ShouldStop" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" Name="Config" />
@@ -132,7 +132,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[String.IsNullOrEmpty(in_ConfigFilePath)]" DisplayName="If Empty Config Path ?" sap:VirtualizedContainerService.HintSize="436,272.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[String.IsNullOrEmpty(in_ConfigFilePath)]" DisplayName="If Empty Config Path?" sap:VirtualizedContainerService.HintSize="435.2,325.6" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -140,7 +140,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Assign DisplayName="Assign Config.xlsx" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign DisplayName="Assign Config.xlsx" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[in_ConfigFilePath]</OutArgument>
           </Assign.To>
@@ -150,7 +150,7 @@
         </Assign>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="434,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="433.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -160,7 +160,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeConfigurations Workflow" sap:VirtualizedContainerService.HintSize="436,147.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Core/InitializeConfigurations.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitializeConfigurations Workflow" sap:VirtualizedContainerService.HintSize="435.2,145.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Core/InitializeConfigurations.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, ui:GenericValue)" x:Key="out_Config">[Config]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Language">[in_Language]</InArgument>
@@ -174,7 +174,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <If Condition="[in_DisableServerCertificateValidation]" DisplayName="If DisableServerCertificateValidation" sap:VirtualizedContainerService.HintSize="436,57.333333333333336" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[in_DisableServerCertificateValidation]" DisplayName="If DisableServerCertificateValidation" sap:VirtualizedContainerService.HintSize="435.2,84.8" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
